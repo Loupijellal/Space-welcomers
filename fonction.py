@@ -45,12 +45,12 @@ canevas.pack(pady=20)
 
 # Affichage du score
 score = 0
-label_score = tk.Label(fenetre, text="Score: 0", font=("Arial", 14))
-label_score.pack()
+label_score = tk.Label(fenetre, text="Score: 0", font=("Arial", 14), fg="white", bg="black")
 
 # Création des boutons sur le canevas
-bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=demarrer_jeu)
-bouton_quitter = tk.Button(fenetre, text="Quitter", command=quitter_jeu)
+bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=demarrer_jeu, fg="black", highlightbackground="black")
+
+bouton_quitter = tk.Button(fenetre, text="Quitter", command=quitter_jeu, fg="black", highlightbackground="black")
 
 # Placement des boutons sur le canevas avec create_window
 canevas.create_window(100,100, window=label_score)
