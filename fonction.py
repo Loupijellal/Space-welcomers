@@ -16,4 +16,4 @@ canevas.pack(pady=20)
 # Lancer la boucle principale de la fenêtre
 fenetre.mainloop()
 
-#n'importe quoi bbzdqd
+#n'importe quoi bbzdqddfgd
