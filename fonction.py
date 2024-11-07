@@ -40,7 +40,10 @@ menu_options.add_command(label="Quitter", command=quitter_jeu)
 menu_bar.add_cascade(label="Options", menu=menu_options)
 
 # Création du canevas pour la zone de jeu
-canevas = tk.Canvas(fenetre, width=400, height=300, bg="black")
+canvas_width = 400
+canvas_height = 300
+
+canevas = tk.Canvas(fenetre, width=canvas_width, height=canvas_height, bg="black")
 canevas.pack(pady=20)
 
 # Affichage du score
@@ -53,7 +56,7 @@ bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=demarrer_j
 bouton_quitter = tk.Button(fenetre, text="Quitter", command=quitter_jeu, fg="black", highlightbackground="black")
 
 # Placement des boutons sur le canevas avec create_window
-canevas.create_window(100,100, window=label_score)
+canevas.create_window(canvas_width // 2, 20, window=label_score, anchor="n")
 canevas.create_window(100, 250, window=bouton_demarrer)  # Positionne le bouton "Démarrer le jeu"
 canevas.create_window(300, 250, window=bouton_quitter)   # Positionne le bouton 
 
