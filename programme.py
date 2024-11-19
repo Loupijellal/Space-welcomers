@@ -14,13 +14,10 @@ fenetre.geometry("600x500")
 menu_bar = tk.Menu(fenetre)
 fenetre.config(menu=menu_bar)
 
-# Ajout d'un menu déroulant avec quelques options
-menu_options = tk.Menu(menu_bar, tearoff=0)
-menu_options.add_command(label="Option 1", command=fct.afficher_option)
-menu_options.add_command(label="Option 2", command=fct.afficher_option)
-menu_options.add_separator()
-menu_options.add_command(label="Quitter", command=fct.quitter_jeu)
-menu_bar.add_cascade(label="Options", menu=menu_options)
+
+
+# Nouveaux boutons (créés mais non affichés au départ)
+
 
 # Création du canevas pour la zone de jeu
 canvas_width = 400
@@ -36,19 +33,27 @@ label_score = tk.Label(fenetre, text="Score: 0", font=("Arial", 14), fg="white",
 # Création des boutons sur le canevas
 bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=fct.demarrer_jeu, fg="black", highlightbackground="black")
 
+bouton_options = tk.Button(fenetre, text='Options', command=fct.afficher_options, fg="black", highlightbackground="black")
+
 bouton_quitter = tk.Button(fenetre, text="Quitter", command=fct.quitter_jeu, fg="black", highlightbackground="black")
+
+bouton_option1 = tk.Button(fenetre, text="Option 1", font=("Arial", 14), fg="white", bg="black")
+bouton_option2 = tk.Button(fenetre, text="Option 2", font=("Arial", 14), fg="white", bg="black")
+bouton_retour = tk.Button(fenetre, text="Retour", font=("Arial", 14), fg="white", bg="black", command=fct.revenir_arriere)
 
 # Placement des boutons sur le canevas avec create_window
 canevas.create_window(canvas_width // 2, 20, window=label_score, anchor="n")
 canevas.create_window(100, 250, window=bouton_demarrer)  # Positionne le bouton "Démarrer le jeu"
 canevas.create_window(300, 250, window=bouton_quitter)   # Positionne le bouton 
+canevas.create_window(200, 100, window=bouton_options)
+
 
 # Création de l'Alien (ici un rectangle)
-alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
+#alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
 
 
 # Lancer le mouvement de l'Alien
-fct.deplacer_alien()
+#fct.deplacer_alien()
 
 # Lancement de la boucle principale de la fenêtre
 fenetre.mainloop()
