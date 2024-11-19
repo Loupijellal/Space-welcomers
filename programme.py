@@ -14,11 +14,6 @@ fenetre.geometry("600x500")
 menu_bar = tk.Menu(fenetre)
 fenetre.config(menu=menu_bar)
 
-
-
-# Nouveaux boutons (créés mais non affichés au départ)
-
-
 # Création du canevas pour la zone de jeu
 canvas_width = 400
 canvas_height = 300
@@ -49,11 +44,12 @@ canevas.create_window(200, 100, window=bouton_options)
 
 
 # Création de l'Alien (ici un rectangle)
-#alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
+alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
 
-
+# création du vaisseau 
+vaisseau = canevas.create_oval()
 # Lancer le mouvement de l'Alien
-#fct.deplacer_alien()
+fct.deplacer_alien()
 
 # Lancement de la boucle principale de la fenêtre
 fenetre.mainloop()
