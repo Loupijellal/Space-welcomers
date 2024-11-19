@@ -20,4 +20,11 @@ def quitter_jeu():
 def afficher_option():
     messagebox.showinfo("Option", "Option sélectionnée")
 
+# initialisation de la classe monstre
+class Monstres:
+    def __init__(monstre):
+        monstre.position = (0,0)
+        monstre.couleur = str
+        monstre.vie = 0
 
+monstres = [Monstres() for _ in range(3)]
