@@ -28,3 +28,36 @@ class Monstres:
         monstre.vie = 0
 
 monstres = [Monstres() for _ in range(3)]
+
+# Fonction pour déplacer l'Alien
+def deplacer_alien():
+    # Déplacer l'Alien
+    pg.canevas.move(pg.alien, pg.dx, 0)
+
+    # Obtenir les coordonnées de l'Alien
+    x1, y1, x2, y2 = pg.canevas.coords(pg.alien)
+
+    # Vérifier les collisions avec les bords du canevas
+    if x2 >= pg.canvas_width or x1 <= 0:
+        pg.dx = -pg.dx  # Inverser la direction
+
+    # Relancer la fonction après un délai pour animer le mouvement
+    pg.fenetre.after(20, deplacer_alien)
+
+def afficher_options():
+    # Masquer le bouton de base
+    pg.bouton_options.pack_forget()
+    
+    # Afficher les nouveaux boutons
+    pg.bouton_option1.pack(pady=5)
+    pg.bouton_option2.pack(pady=5)
+    pg.bouton_retour.pack(pady=5)
+
+def revenir_arriere():
+    # Masquer les nouveaux boutons
+    pg.bouton_option1.pack_forget()
+    pg.bouton_option2.pack_forget()
+    pg.bouton_retour.pack_forget()
+    
+    # Réafficher le bouton de base
+    pg.bouton_options.pack(pady=20)
