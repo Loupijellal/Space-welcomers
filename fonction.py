@@ -41,7 +41,7 @@ def deplacer_alien():
     if x2 >= pg.canvas_width or x1 <= 0:
         pg.dx = -pg.dx  # Inverser la direction
 
-    # Relancer la fonction après un délai pour animer le mouvement
+    # Relancer la  fonction après un délai pour animer le mouvement
     pg.fenetre.after(20, deplacer_alien)
 
 def afficher_options():

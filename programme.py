@@ -47,7 +47,7 @@ canevas.create_window(200, 100, window=bouton_options)
 alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
 
 # création du vaisseau 
-vaisseau = canevas.create_oval()
+vaisseau = canevas.create_oval(10,100,50,100,fill="red")
 # Lancer le mouvement de l'Alien
 fct.deplacer_alien()
 
