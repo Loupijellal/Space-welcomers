@@ -1,6 +1,5 @@
 import tkinter as tk
-
-import tkinter as tk
+import programme as pg
 from tkinter import messagebox
 
 # Fonction pour démarrer le jeu
@@ -8,15 +7,14 @@ def demarrer_jeu():
     global score
     score = 0
     mise_a_jour_score()
-    messagebox.showinfo("Jeu", "Le jeu commence !")
 
 # Fonction pour mettre à jour le score
 def mise_a_jour_score():
-    label_score.config(text=f"Score: {score}")
+    pg.label_score.config(text=f"Score: {score}")
 
 # Fonction pour quitter le jeu
 def quitter_jeu():
-    fenetre.quit()
+    pg.fenetre.quit()
 
 # Fonction pour afficher une option dans le menu
 def afficher_option():
@@ -59,3 +57,5 @@ canevas.create_window(300, 250, window=bouton_quitter)   # Positionne le bouton
 
 # Lancement de la boucle principale de la fenêtre
 fenetre.mainloop()
+
+#n'importe quoi bbzdqddfgd
