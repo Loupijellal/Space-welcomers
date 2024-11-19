@@ -7,7 +7,6 @@ def demarrer_jeu():
     global score
     score = 0
     mise_a_jour_score()
-    messagebox.showinfo("Jeu", "Le jeu commence !")
 
 # Fonction pour mettre à jour le score
 def mise_a_jour_score():
