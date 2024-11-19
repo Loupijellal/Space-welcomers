@@ -59,5 +59,3 @@ canevas.create_window(300, 250, window=bouton_quitter)   # Positionne le bouton
 
 # Lancement de la boucle principale de la fenêtre
 fenetre.mainloop()
-
-#n'importe quoi bbzdqddfgd
