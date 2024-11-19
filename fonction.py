@@ -20,4 +20,3 @@ def quitter_jeu():
 def afficher_option():
     messagebox.showinfo("Option", "Option sélectionnée")
 
-
