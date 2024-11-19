@@ -40,5 +40,14 @@ canevas.create_window(canvas_width // 2, 20, window=label_score, anchor="n")
 canevas.create_window(100, 250, window=bouton_demarrer)  # Positionne le bouton "Démarrer le jeu"
 canevas.create_window(300, 250, window=bouton_quitter)   # Positionne le bouton 
 
+# Création de l'Alien (ici un rectangle)
+alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
+
+# Vitesse initiale de l'Alien
+dx = 5
+
+# Lancer le mouvement de l'Alien
+fct.deplacer_alien()
+
 # Lancement de la boucle principale de la fenêtre
 fenetre.mainloop()
