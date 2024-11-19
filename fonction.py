@@ -34,10 +34,10 @@ def deplacer_alien():
     global dx  # Vitesse de déplacement horizontal
 
     # Déplacer l'Alien
-    pg.canevas.move(alien, dx, 0)
+    pg.canevas.move(pg.alien, dx, 0)
 
     # Obtenir les coordonnées de l'Alien
-    x1, y1, x2, y2 = pg.canevas.coords(alien)
+    x1, y1, x2, y2 = pg.canevas.coords(pg.alien)
 
     # Vérifier les collisions avec les bords du canevas
     if x2 >= pg.canvas_width or x1 <= 0:
