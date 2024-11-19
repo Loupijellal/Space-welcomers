@@ -2,6 +2,9 @@ import fonction as fct
 import tkinter as tk
 
 
+# Vitesse initiale de l'Alien
+dx = 5
+
 # Initialisation de la fenêtre principale
 fenetre = tk.Tk()
 fenetre.title("Jeu Tkinter")
@@ -43,8 +46,6 @@ canevas.create_window(300, 250, window=bouton_quitter)   # Positionne le bouton
 # Création de l'Alien (ici un rectangle)
 alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
 
-# Vitesse initiale de l'Alien
-dx = 5
 
 # Lancer le mouvement de l'Alien
 fct.deplacer_alien()
