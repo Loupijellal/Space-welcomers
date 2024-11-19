@@ -4,9 +4,15 @@ from tkinter import messagebox
 
 # Fonction pour démarrer le jeu
 def demarrer_jeu():
+    pg.canevas.delete(pg.id_bouton_demarrer)
+    pg.canevas.delete(pg.id_bouton_quitter)
+    pg.canevas.delete(pg.id_bouton_options)
     global score
     score = 0
     mise_a_jour_score()
+    global alien
+    alien = pg.canevas.create_oval(180, 140, 220, 180, fill="green")  # Un Alien simple
+    deplacer_alien()  # Démarrer le mouvement de l'Alien
 
 # Fonction pour mettre à jour le score
 def mise_a_jour_score():
@@ -15,10 +21,6 @@ def mise_a_jour_score():
 # Fonction pour quitter le jeu
 def quitter_jeu():
     pg.fenetre.quit()
-
-# Fonction pour afficher une option dans le menu
-def afficher_option():
-    messagebox.showinfo("Option", "Option sélectionnée")
 
 # initialisation de la classe monstre
 class Monstres:
@@ -32,10 +34,10 @@ monstres = [Monstres() for _ in range(3)]
 # Fonction pour déplacer l'Alien
 def deplacer_alien():
     # Déplacer l'Alien
-    pg.canevas.move(pg.alien, pg.dx, 0)
+    pg.canevas.move(alien, pg.dx, 0)
 
     # Obtenir les coordonnées de l'Alien
-    x1, y1, x2, y2 = pg.canevas.coords(pg.alien)
+    x1, y1, x2, y2 = pg.canevas.coords(alien)
 
     # Vérifier les collisions avec les bords du canevas
     if x2 >= pg.canvas_width or x1 <= 0:

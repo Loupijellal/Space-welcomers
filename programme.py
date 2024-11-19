@@ -38,18 +38,22 @@ bouton_retour = tk.Button(fenetre, text="Retour", font=("Arial", 14), fg="white"
 
 # Placement des boutons sur le canevas avec create_window
 canevas.create_window(canvas_width // 2, 20, window=label_score, anchor="n")
-canevas.create_window(100, 250, window=bouton_demarrer)  # Positionne le bouton "Démarrer le jeu"
-canevas.create_window(300, 250, window=bouton_quitter)   # Positionne le bouton 
-canevas.create_window(200, 100, window=bouton_options)
+id_bouton_demarrer = canevas.create_window(200, 100, window=bouton_demarrer)
+id_bouton_options = canevas.create_window(200, 150, window=bouton_options)
+id_bouton_quitter = canevas.create_window(200, 200, window=bouton_quitter)
 
 
 # Création de l'Alien (ici un rectangle)
-alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
+#alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
 
 # création du vaisseau 
+<<<<<<< HEAD
 vaisseau = canevas.create_oval(10,100,50,100,fill="red")
+=======
+#vaisseau = canevas.create_oval()
+>>>>>>> 95ee12572bb11d59ef20c14da159e393ded85a2a
 # Lancer le mouvement de l'Alien
-fct.deplacer_alien()
+#fct.deplacer_alien()
 
 # Lancement de la boucle principale de la fenêtre
 fenetre.mainloop()
