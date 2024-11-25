@@ -1,57 +1,62 @@
 import fonction as fct
 import tkinter as tk
-
+from PIL import Image, ImageTk 
 
 # Vitesse initiale de l'Alien
 dx = 5
 
 # Initialisation de la fenêtre principale
 fenetre = tk.Tk()
+largeur_ecran = fenetre.winfo_screenwidth()
+hauteur_ecran = fenetre.winfo_screenheight() - 200
 fenetre.title("Jeu Tkinter")
-fenetre.geometry("600x500")
+fenetre.geometry(f"{largeur_ecran}x{hauteur_ecran}")  # Taille de la fenêtre
 
-# Création du menu
-menu_bar = tk.Menu(fenetre)
-fenetre.config(menu=menu_bar)
+# Charger l'image de fond
+image_fond = Image.open("/Users/gaspardc/Documents/CPE Lyon/Csdev/Space-welcomers/jikko2.jpeg")  # Chemin de l'image
+image_fond = image_fond.resize((largeur_ecran, hauteur_ecran), Image.Resampling.LANCZOS)  # Redimensionner l'image
+image_fond_tk = ImageTk.PhotoImage(image_fond)
 
-# Création du canevas pour la zone de jeu
-canvas_width = 400
-canvas_height = 300
+# Création du canevas
+canvas_width = image_fond_tk.width()
+canvas_height = image_fond_tk.height()
+canevas = tk.Canvas(fenetre, width=canvas_width, height=canvas_height)
+canevas.pack(fill="both", expand=True)
 
-canevas = tk.Canvas(fenetre, width=canvas_width, height=canvas_height, bg="black")
-canevas.pack(pady=20)
+# Affichage de l'image de fond
+image_fond_id = canevas.create_image(0, 0, anchor="nw", image=image_fond_tk, tags="fond")
 
-# Affichage du score
+# Charger l'image de l'Alien
+image_alien = Image.open("/Users/gaspardc/Documents/CPE Lyon/Csdev/Space-welcomers/ekko.png")  # Remplacez par le chemin de votre image
+image_alien = image_alien.resize((40, 40), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
+image_alien_tk = ImageTk.PhotoImage(image_alien)
+
+# Affichage du score sur le canevas
 score = 0
-label_score = tk.Label(fenetre, text="Score: 0", font=("Arial", 14), fg="white", bg="black")
+id_score = canevas.create_text(
+    largeur_ecran/2, 30,  # Position du texte (au milieu en haut)
+    text=f"Score: {score}",
+    font=("Arial", 20, "bold"),
+    fill="white"
+)
+
+bouton_option1 = tk.Button(fenetre, text="Option 1", font=("Arial", 14), fg="white", bg="black", highlightbackground="black", highlightthickness=0)
+bouton_option2 = tk.Button(fenetre, text="Option 2", font=("Arial", 14), fg="white", bg="black", highlightbackground="black", highlightthickness=0)
+bouton_retour = tk.Button(fenetre, text="Retour", command=fct.revenir_menu, font=("Arial", 14), fg="white", bg="black", highlightbackground="black", highlightthickness=0)
 
 # Création des boutons sur le canevas
 bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=fct.demarrer_jeu, fg="black", highlightbackground="black")
+bouton_options = tk.Button(fenetre, text="Options", command=fct.afficher_options, fg="black", highlightbackground="black")
+bouton_quitter = tk.Button(fenetre, text="Quitter", command=fenetre.quit, fg="black", highlightbackground="black")
 
-bouton_options = tk.Button(fenetre, text='Options', command=fct.afficher_options, fg="black", highlightbackground="black")
+# Placement des boutons sur le canevas
+id_bouton_demarrer = canevas.create_window(largeur_ecran/2, 300, window=bouton_demarrer)
+id_bouton_options = canevas.create_window(largeur_ecran/2, 350, window=bouton_options)
+id_bouton_quitter = canevas.create_window(largeur_ecran/2, 400, window=bouton_quitter)
 
-bouton_quitter = tk.Button(fenetre, text="Quitter", command=fct.quitter_jeu, fg="black", highlightbackground="black")
-
-bouton_option1 = tk.Button(fenetre, text="Option 1", font=("Arial", 14), fg="white", bg="black")
-bouton_option2 = tk.Button(fenetre, text="Option 2", font=("Arial", 14), fg="white", bg="black")
-bouton_retour = tk.Button(fenetre, text="Retour", font=("Arial", 14), fg="white", bg="black", command=fct.revenir_arriere)
-
-# Placement des boutons sur le canevas avec create_window
-canevas.create_window(canvas_width // 2, 20, window=label_score, anchor="n")
-id_bouton_demarrer = canevas.create_window(200, 100, window=bouton_demarrer)
-id_bouton_options = canevas.create_window(200, 150, window=bouton_options)
-id_bouton_quitter = canevas.create_window(200, 200, window=bouton_quitter)
-
-
-# Création de l'Alien (ici un rectangle)
-#alien = canevas.create_rectangle(50, 100, 100, 150, fill="green")
 
 # création du vaisseau 
-<<<<<<< HEAD
-vaisseau = canevas.create_oval(10,100,50,100,fill="red")
-=======
 #vaisseau = canevas.create_oval()
->>>>>>> 95ee12572bb11d59ef20c14da159e393ded85a2a
 # Lancer le mouvement de l'Alien
 #fct.deplacer_alien()
 

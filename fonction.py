@@ -1,6 +1,6 @@
 import tkinter as tk
 import programme as pg
-from tkinter import messagebox
+
 
 # Fonction pour démarrer le jeu
 def demarrer_jeu():
@@ -8,16 +8,18 @@ def demarrer_jeu():
     pg.canevas.delete(pg.id_bouton_quitter)
     pg.canevas.delete(pg.id_bouton_options)
     global score
-    score = 0
-    mise_a_jour_score()
     global alien
-    alien = pg.canevas.create_oval(180, 140, 220, 180, fill="green")  # Un Alien simple
-    deplacer_alien()  # Démarrer le mouvement de l'Alien
+    mise_a_jour_score()
+    alien = pg.canevas.create_image(200, 300, image=pg.image_alien_tk, anchor="center")
+    pg.canevas.tag_raise(alien)
+      # Démarrer le mouvement de l'Alien
 
 # Fonction pour mettre à jour le score
-def mise_a_jour_score():
-    pg.label_score.config(text=f"Score: {score}")
-
+def mise_a_jour_score(nouveau_score):
+    global score
+    score = nouveau_score
+    pg.canevas.itemconfig(pg.id_score, text=f"Score: {score}")
+    
 # Fonction pour quitter le jeu
 def quitter_jeu():
     pg.fenetre.quit()
@@ -29,10 +31,9 @@ class Monstres:
         monstre.couleur = str
         monstre.vie = 0
 
-monstres = [Monstres() for _ in range(3)]
 
 # Fonction pour déplacer l'Alien
-def deplacer_alien():
+def deplacer_alien(alien):
     # Déplacer l'Alien
     pg.canevas.move(alien, pg.dx, 0)
 
@@ -44,22 +45,30 @@ def deplacer_alien():
         pg.dx = -pg.dx  # Inverser la direction
 
     # Relancer la  fonction après un délai pour animer le mouvement
-    pg.fenetre.after(20, deplacer_alien)
+    pg.fenetre.after(20, lambda: deplacer_alien(alien))
 
 def afficher_options():
-    # Masquer le bouton de base
-    pg.bouton_options.pack_forget()
+    global id_option1, id_option2, id_retour
     
-    # Afficher les nouveaux boutons
-    pg.bouton_option1.pack(pady=5)
-    pg.bouton_option2.pack(pady=5)
-    pg.bouton_retour.pack(pady=5)
+    # Supprimer les boutons principaux
+    pg.canevas.delete(pg.id_bouton_demarrer)
+    pg.canevas.delete(pg.id_bouton_quitter)
+    pg.canevas.delete(pg.id_bouton_options)
 
-def revenir_arriere():
-    # Masquer les nouveaux boutons
-    pg.bouton_option1.pack_forget()
-    pg.bouton_option2.pack_forget()
-    pg.bouton_retour.pack_forget()
-    
-    # Réafficher le bouton de base
-    pg.bouton_options.pack(pady=20)
+    # Créer les boutons d'options dans le canevas
+    id_option1 = pg.canevas.create_window(pg.largeur_ecran/2, 300, window=pg.bouton_option1)
+    id_option2 = pg.canevas.create_window(pg.largeur_ecran/2, 350, window=pg.bouton_option2)
+    id_retour = pg.canevas.create_window(pg.largeur_ecran/2, 400, window=pg.bouton_retour)
+
+def revenir_menu():
+    global id_option1, id_option2, id_retour
+
+    # Supprimer les boutons d'options
+    pg.canevas.delete(id_option1)
+    pg.canevas.delete(id_option2)
+    pg.canevas.delete(id_retour)
+
+    # Réafficher les boutons principaux
+    pg.id_bouton_demarrer = pg.canevas.create_window(400, 300, window=pg.bouton_demarrer)
+    pg.id_bouton_options = pg.canevas.create_window(400, 350, window=pg.bouton_options)
+    pg.id_bouton_quitter = pg.canevas.create_window(400, 400, window=pg.bouton_quitter)
