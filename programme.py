@@ -16,17 +16,17 @@ fenetre.title("Jeu Tkinter")
 fenetre.geometry(f"{largeur_ecran}x{hauteur_ecran}")  # Taille de la fenêtre
 
 # Charger l'image de fond
-image_fond = Image.open("/Users/gaspardc/Documents/CPE Lyon/Csdev/Space-welcomers/jikko2.jpeg")  # Chemin de l'image
+image_fond = Image.open("./jikko2.jpeg")  # Chemin de l'image
 image_fond = image_fond.resize((largeur_ecran, hauteur_ecran), Image.Resampling.LANCZOS)  # Redimensionner l'image
 image_fond_tk = ImageTk.PhotoImage(image_fond)
 
 # Charger les images du vaisseau et de l'alien
-image_vaisseau = Image.open("/Users/gaspardc/Documents/CPE Lyon/Csdev/Space-welcomers/jinx.png")
+image_vaisseau = Image.open("./jinx.png")
 image_vaisseau = image_vaisseau.resize((60, 40), Image.Resampling.LANCZOS)
 image_vaisseau_tk = ImageTk.PhotoImage(image_vaisseau)
 
 # Charger l'image de l'Alien
-image_alien = Image.open("/Users/gaspardc/Documents/CPE Lyon/Csdev/Space-welcomers/ekko.png")  # Remplacez par le chemin de votre image
+image_alien = Image.open("./ekko.png")  # Remplacez par le chemin de votre image
 image_alien = image_alien.resize((40, 40), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
 image_alien_tk = ImageTk.PhotoImage(image_alien)
 
