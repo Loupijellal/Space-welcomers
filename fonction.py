@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 # Fonction pour démarrer le jeu
 def demarrer_jeu(canevas,id_bouton_demarrer,id_bouton_quitter,id_bouton_options, image_alien_tk, largeur_ecran, image_vaisseau_tk):
     canevas.delete(id_bouton_demarrer)
