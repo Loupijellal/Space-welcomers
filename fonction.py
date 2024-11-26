@@ -6,11 +6,11 @@ def demarrer_jeu(canevas,id_bouton_demarrer,id_bouton_quitter,id_bouton_options,
     canevas.delete(id_bouton_demarrer)
     canevas.delete(id_bouton_quitter)
     canevas.delete(id_bouton_options)
-    mise_a_jour_score()  #fonction pour la mise a jour du score
+    #mise_a_jour_score()  #fonction pour la mise a jour du score
     global alien , vaisseau #définir de manière global l'alien et le vaisseau
     alien = canevas.create_image(200, 300, image=image_alien_tk, anchor="center")
     vaisseau = canevas.create_image(largeur_ecran/2, 600, image=image_vaisseau_tk, anchor="center")
-    #canevas.tag_raise(alien)
+    canevas.tag_raise(alien)
 
     
 # Déplacement du vaisseau
