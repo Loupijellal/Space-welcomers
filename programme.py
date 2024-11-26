@@ -60,9 +60,9 @@ bouton_options = tk.Button(fenetre, text="Options", command=lambda: fct.afficher
 bouton_quitter = tk.Button(fenetre, text="Quitter", command=fenetre.quit, fg="black", highlightbackground="black")
 
 # Placement des boutons sur le canevas
-id_bouton_demarrer = canevas.create_window(largeur_ecran, 300, window=bouton_demarrer)
-id_bouton_options = canevas.create_window(largeur_ecran, 350, window=bouton_options)
-id_bouton_quitter = canevas.create_window(largeur_ecran, 400, window=bouton_quitter)
+id_bouton_demarrer = canevas.create_window(largeur_ecran/2, 300, window=bouton_demarrer)
+id_bouton_options = canevas.create_window(largeur_ecran/2, 350, window=bouton_options)
+id_bouton_quitter = canevas.create_window(largeur_ecran/2, 400, window=bouton_quitter)
 
 # Lier les touches clavier
 fenetre.bind("<Left>", lambda event: fct.deplacer_vaisseau(event, canevas, image_vaisseau_tk, dx))
