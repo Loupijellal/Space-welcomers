@@ -20,7 +20,7 @@ def deplacer_vaisseau(event,canevas, vaisseau, dx):
         canevas.move(vaisseau, dx, 0)
 
 # Tirer un projectile
-def tirer_projectile(event, canevas,vaisseau, projectiles):
+def tirer_projectile(event, canevas, vaisseau, projectiles):
     x, y = canevas.coords(vaisseau)
     projectile = canevas.create_oval(x - 5, y - 20, x + 5, y - 10, fill="red")
     projectiles.append(projectile)
