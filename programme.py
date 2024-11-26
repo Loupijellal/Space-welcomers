@@ -12,12 +12,12 @@ alien_dx = 5  # Vitesse horizontale de l'alien
 # Initialisation de la fenêtre principale
 fenetre = tk.Tk()
 largeur_ecran = fenetre.winfo_screenwidth()
-hauteur_ecran = fenetre.winfo_screenheight() - 300
+hauteur_ecran = fenetre.winfo_screenheight() 
 fenetre.title("Jeu Tkinter")
 fenetre.geometry(f"{largeur_ecran}x{hauteur_ecran}")  # Taille de la fenêtre
 
 # Charger l'image de fond
-image_fond = Image.open("images/jikko2.jpeg")  # Chemin de l'image
+image_fond = Image.open("images/love.jpg")  # Chemin de l'image
 image_fond = image_fond.resize((largeur_ecran, hauteur_ecran), Image.Resampling.LANCZOS)  # Redimensionner l'image
 image_fond_tk = ImageTk.PhotoImage(image_fond)
 
@@ -39,7 +39,7 @@ canevas.pack(fill="both", expand=True)
 
 # Affichage de l'image de fond
 image_fond_id = canevas.create_image(0, 0, anchor="nw", image=image_fond_tk, tags="fond")
-print("ajout fond")
+ 
 
 # Affichage du score sur le canevas
 score = 0
