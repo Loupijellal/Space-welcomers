@@ -52,7 +52,7 @@ id_score = canevas.create_text(
 
 bouton_option1 = tk.Button(fenetre, text="Option 1", font=("Arial", 14), fg="white", bg="black", highlightbackground="black", highlightthickness=0)
 bouton_option2 = tk.Button(fenetre, text="Option 2", font=("Arial", 14), fg="white", bg="black", highlightbackground="black", highlightthickness=0)
-bouton_retour = tk.Button(fenetre, text="Retour", command=lambda: fct.revenir_menu(canevas, bouton_demarrer, bouton_quitter, bouton_options, id_bouton_demarrer, id_bouton_options, id_bouton_quitter), font=("Arial", 14), fg="white", bg="black", highlightbackground="black", highlightthickness=0)
+bouton_retour = tk.Button(fenetre, text="Retour", command=lambda: fct.revenir_menu(canevas, largeur_ecran, bouton_demarrer, bouton_quitter, bouton_options, id_bouton_demarrer, id_bouton_options, id_bouton_quitter), font=("Arial", 14), fg="white", bg="black", highlightbackground="black", highlightthickness=0)
 
 # Création des boutons sur le canevas
 bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=lambda: fct.demarrer_jeu(canevas, id_bouton_demarrer, id_bouton_quitter, id_bouton_options, image_alien_tk, largeur_ecran, image_vaisseau_tk), fg="black", highlightbackground="black")
