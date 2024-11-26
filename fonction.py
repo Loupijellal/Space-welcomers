@@ -74,7 +74,6 @@ def deplacer_alien(canevas, fenetre, largeur_ecran):
 
 def afficher_options(canevas, id_bouton_demarrer, id_bouton_quitter, id_bouton_options, largeur_ecran, bouton_option1, bouton_option2, bouton_retour):
     global id_option1, id_option2, id_retour
-    
     # Supprimer les boutons principaux
     canevas.delete(id_bouton_demarrer)
     canevas.delete(id_bouton_quitter)
