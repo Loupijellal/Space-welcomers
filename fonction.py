@@ -11,8 +11,11 @@ def demarrer_jeu(canevas,id_bouton_demarrer,id_bouton_quitter,id_bouton_options,
     alien = canevas.create_image(200, 300, image=image_alien_tk, anchor="center")
     vaisseau = canevas.create_image(largeur_ecran/2, 600, image=image_vaisseau_tk, anchor="center")
     canevas.tag_raise(alien)
-      # Démarrer le mouvement de l'Alien
 
+<<<<<<< HEAD
+    
+=======
+>>>>>>> 6e37da5c7f0190de8029030faa96eaa1333d583b
 # Déplacement du vaisseau
 def deplacer_vaisseau(event,canevas, dx):
     if event.keysym == "Left":
