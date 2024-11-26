@@ -1,18 +1,60 @@
 import tkinter as tk
-import programme as pg
 
 
 # Fonction pour démarrer le jeu
-def demarrer_jeu():
-    pg.canevas.delete(pg.id_bouton_demarrer)
-    pg.canevas.delete(pg.id_bouton_quitter)
-    pg.canevas.delete(pg.id_bouton_options)
+def demarrer_jeu(canevas):
+    canevas.delete(pg.id_bouton_demarrer)
+    canevas.delete(pg.id_bouton_quitter)
+    canevas.delete(pg.id_bouton_options)
     global score
     global alien
-    mise_a_jour_score()
-    alien = pg.canevas.create_image(200, 300, image=pg.image_alien_tk, anchor="center")
-    pg.canevas.tag_raise(alien)
+    #mise_a_jour_score()
+    alien = canevas.create_image(200, 300, image=pg.image_alien_tk, anchor="center")
+    print("ajout alien")
+    canevas.tag_raise(alien)
       # Démarrer le mouvement de l'Alien
+
+# Déplacement du vaisseau
+def deplacer_vaisseau(event):
+    if event.keysym == "Left":
+        pg.canevas.move(vaisseau, -dx, 0)
+    elif event.keysym == "Right":
+        pg.canevas.move(vaisseau, dx, 0)
+
+# Tirer un projectile
+def tirer_projectile(event):
+    x, y = pg.canevas.coords(vaisseau)
+    projectile = pg.canevas.create_oval(x - 5, y - 20, x + 5, y - 10, fill="red")
+    pg.projectiles.append(projectile)
+    deplacer_projectile(projectile)
+
+# Déplacer un projectile vers le haut
+def deplacer_projectile(projectile):
+    if pg.canevas.coords(projectile):
+        pg.canevas.move(projectile, 0, vitesse_projectile)
+        x, y, _, _ = pg.canevas.bbox(projectile)
+
+        # Vérifier collision avec l'alien
+        if collision(projectile, alien):
+            pg.canevas.delete(projectile)
+            pg.canevas.delete(alien)
+            pg.projectiles.remove(projectile)
+            return
+
+        # Supprimer le projectile lorsqu'il sort du canevas
+        if y <= 0:
+            pg.canevas.delete(projectile)
+            pg.projectiles.remove(projectile)
+        else:
+            pg.fenetre.after(20, lambda: deplacer_projectile(projectile))
+
+# Collision entre deux objets
+def collision(objet1, objet2):
+    if not pg.canevas.coords(objet1) or not pg.canevas.coords(objet2):
+        return False
+    x1, y1, x2, y2 = pg.canevas.bbox(objet1)
+    xa1, ya1, xa2, ya2 = pg.canevas.bbox(objet2)
+    return not (x2 < xa1 or x1 > xa2 or y2 < ya1 or y1 > ya2)
 
 # Fonction pour mettre à jour le score
 def mise_a_jour_score(nouveau_score):
@@ -32,20 +74,13 @@ class Monstres:
         monstre.vie = 0
 
 
-# Fonction pour déplacer l'Alien
-def deplacer_alien(alien):
-    # Déplacer l'Alien
-    pg.canevas.move(alien, pg.dx, 0)
-
-    # Obtenir les coordonnées de l'Alien
-    x1, y1, x2, y2 = pg.canevas.coords(alien)
-
-    # Vérifier les collisions avec les bords du canevas
-    if x2 >= pg.canvas_width or x1 <= 0:
-        pg.dx = -pg.dx  # Inverser la direction
-
-    # Relancer la  fonction après un délai pour animer le mouvement
-    pg.fenetre.after(20, lambda: deplacer_alien(alien))
+# Déplacement de l'alien
+def deplacer_alien():
+    pg.canevas.move(alien, pg.alien_dx, 0)
+    x, y = pg.canevas.coords(alien)
+    if x >= pg.canvas_width - 20 or x <= 20:
+        pg.alien_dx = -pg.alien_dx
+    pg.fenetre.after(50, deplacer_alien)
 
 def afficher_options():
     global id_option1, id_option2, id_retour
