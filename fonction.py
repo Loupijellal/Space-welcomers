@@ -2,13 +2,14 @@ import tkinter as tk
 
 
 # Fonction pour démarrer le jeu
-def demarrer_jeu(canevas,id_bouton_demarrer,id_bouton_quitter,id_bouton_options, image_alien_tk):
+def demarrer_jeu(canevas,id_bouton_demarrer,id_bouton_quitter,id_bouton_options, image_alien_tk, largeur_ecran, image_vaisseau_tk):
     canevas.delete(id_bouton_demarrer)
     canevas.delete(id_bouton_quitter)
     canevas.delete(id_bouton_options)
     #mise_a_jour_score()
     global alien
     alien = canevas.create_image(200, 300, image=image_alien_tk, anchor="center")
+    vaisseau = canevas.create_image(largeur_ecran/2, 600, image=image_vaisseau_tk, anchor="center")
     canevas.tag_raise(alien)
       # Démarrer le mouvement de l'Alien
 

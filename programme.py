@@ -23,12 +23,12 @@ image_fond_tk = ImageTk.PhotoImage(image_fond)
 
 # Charger les images du vaisseau et de l'alien
 image_vaisseau = Image.open("images/jinx.png")
-image_vaisseau = image_vaisseau.resize((60, 40), Image.Resampling.LANCZOS)
+image_vaisseau = image_vaisseau.resize((100, 100), Image.Resampling.LANCZOS)
 image_vaisseau_tk = ImageTk.PhotoImage(image_vaisseau)
 
 # Charger l'image de l'Alien
 image_alien = Image.open("images/ekko.png")  # Remplacez par le chemin de votre image
-image_alien = image_alien.resize((40, 40), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
+image_alien = image_alien.resize((100, 100), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
 image_alien_tk = ImageTk.PhotoImage(image_alien)
 
 # Création du canevas
@@ -55,7 +55,7 @@ bouton_option2 = tk.Button(fenetre, text="Option 2", font=("Arial", 14), fg="whi
 bouton_retour = tk.Button(fenetre, text="Retour", command=lambda: fct.revenir_menu(canevas, bouton_demarrer, bouton_quitter, bouton_options, id_bouton_demarrer, id_bouton_options, id_bouton_quitter), font=("Arial", 14), fg="white", bg="black", highlightbackground="black", highlightthickness=0)
 
 # Création des boutons sur le canevas
-bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=lambda: fct.demarrer_jeu(canevas, id_bouton_demarrer, id_bouton_quitter, id_bouton_options, image_alien_tk), fg="black", highlightbackground="black")
+bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=lambda: fct.demarrer_jeu(canevas, id_bouton_demarrer, id_bouton_quitter, id_bouton_options, image_alien_tk, largeur_ecran, image_vaisseau_tk), fg="black", highlightbackground="black")
 bouton_options = tk.Button(fenetre, text="Options", command=lambda: fct.afficher_options(canevas, id_bouton_demarrer, id_bouton_quitter, id_bouton_options, largeur_ecran, bouton_option1, bouton_option2, bouton_retour), fg="black", highlightbackground="black")
 bouton_quitter = tk.Button(fenetre, text="Quitter", command=fenetre.quit, fg="black", highlightbackground="black")
 
