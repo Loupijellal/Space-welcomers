@@ -85,13 +85,13 @@ def afficher_options(canevas, id_bouton_demarrer, id_bouton_quitter, id_bouton_o
     id_option2 = canevas.create_window(largeur_ecran/2, 350, window=bouton_option2)
     id_retour = canevas.create_window(largeur_ecran/2, 400, window=bouton_retour)
 
-def revenir_menu(canevas, bouton_demarrer, bouton_quitter, bouton_options, id_bouton_demarrer, id_bouton_options, id_bouton_quitter):
+def revenir_menu(canevas, largeur_ecran, bouton_demarrer, bouton_quitter, bouton_options, id_bouton_demarrer, id_bouton_options, id_bouton_quitter):
     # Supprimer les boutons d'options
     canevas.delete(id_option1)
     canevas.delete(id_option2)
     canevas.delete(id_retour)
 
     # Réafficher les boutons principaux
-    id_bouton_demarrer = canevas.create_window(400, 300, window=bouton_demarrer)
-    id_bouton_options = canevas.create_window(400, 350, window=bouton_options)
-    id_bouton_quitter = canevas.create_window(400, 400, window=bouton_quitter)
+    id_bouton_demarrer = canevas.create_window(largeur_ecran/2, 300, window=bouton_demarrer)
+    id_bouton_options = canevas.create_window(largeur_ecran/2, 350, window=bouton_options)
+    id_bouton_quitter = canevas.create_window(largeur_ecran/2, 400, window=bouton_quitter)
