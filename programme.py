@@ -69,9 +69,9 @@ id_bouton_options = canevas.create_window(largeur_ecran/2, 350, window=bouton_op
 id_bouton_quitter = canevas.create_window(largeur_ecran/2, 400, window=bouton_quitter)
 
 # Lier les touches clavier
-fenetre.bind("<Left>", lambda event: fct.deplacer_vaisseau(event, canevas, image_vaisseau_tk, dx))
-fenetre.bind("<Right>", lambda event: fct.deplacer_vaisseau(event, canevas, image_vaisseau_tk, dx))
-fenetre.bind("<space>", lambda event: fct.tirer_projectile(event, canevas, image_vaisseau_tk, projectiles))
+fenetre.bind("<Left>", lambda event: fct.deplacer_vaisseau( canevas, image_vaisseau_tk, dx))
+fenetre.bind("<Right>", lambda event: fct.deplacer_vaisseau(canevas, image_vaisseau_tk, dx))
+fenetre.bind("<space>", lambda event: fct.tirer_projectile( canevas, image_vaisseau_tk, projectiles))
 
 # création du vaisseau 
 #vaisseau = canevas.create_oval()
