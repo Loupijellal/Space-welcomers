@@ -55,7 +55,7 @@ bouton_retour = tk.Button(fenetre, text="Retour", command=fct.revenir_menu, font
 
 # Création des boutons sur le canevas
 bouton_demarrer = tk.Button(fenetre, text="Démarrer le jeu", command=lambda: fct.demarrer_jeu(canevas), fg="black", highlightbackground="black")
-bouton_options = tk.Button(fenetre, text="Options", command=fct.afficher_options, fg="black", highlightbackground="black")
+bouton_options = tk.Button(fenetre, text="Options", command=lambda: fct.afficher_options(canevas), fg="black", highlightbackground="black")
 bouton_quitter = tk.Button(fenetre, text="Quitter", command=fenetre.quit, fg="black", highlightbackground="black")
 
 # Placement des boutons sur le canevas
@@ -64,9 +64,9 @@ id_bouton_options = canevas.create_window(largeur_ecran/2, 350, window=bouton_op
 id_bouton_quitter = canevas.create_window(largeur_ecran/2, 400, window=bouton_quitter)
 
 # Lier les touches clavier
-fenetre.bind("<Left>", fct.deplacer_vaisseau)
-fenetre.bind("<Right>", fct.deplacer_vaisseau)
-fenetre.bind("<space>", fct.tirer_projectile)
+fenetre.bind("<Left>", fct.deplacer_vaisseau(image_vaisseau_tk))
+fenetre.bind("<Right>", fct.deplacer_vaisseau(image_vaisseau_tk))
+fenetre.bind("<space>", fct.tirer_projectile(image_vaisseau_tk))
 
 # création du vaisseau 
 #vaisseau = canevas.create_oval()
