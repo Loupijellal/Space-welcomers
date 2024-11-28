@@ -13,7 +13,7 @@ def demarrer_jeu(canevas,id_bouton_demarrer,id_bouton_quitter,id_bouton_options,
 
     
 # Déplacement du vaisseau
-def deplacer_vaisseau(event,canevas, dx):
+def deplacer_vaisseau(event, canevas, dx):
     if event.keysym == "Left":
         canevas.move(vaisseau, -dx, 0)
     elif event.keysym == "Right":
