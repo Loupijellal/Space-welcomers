@@ -29,7 +29,7 @@ image_vaisseau_tk = ImageTk.PhotoImage(image_vaisseau)
 # Charger l'image du tir 
 image_tir = Image.open("images/coeur.png")  # Remplacez par le chemin de votre image
 image_tir = image_tir.resize((100, 100), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
-image_tir_tk = ImageTk.PhotoImage(image_coeur)
+image_tir_tk = ImageTk.PhotoImage(image_tir)
 
 image_alien = Image.open("images/ekko.png")  # Remplacez par le chemin de votre image
 image_alien = image_alien.resize((100, 100), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
@@ -69,9 +69,9 @@ id_bouton_options = canevas.create_window(largeur_ecran/2, 350, window=bouton_op
 id_bouton_quitter = canevas.create_window(largeur_ecran/2, 400, window=bouton_quitter)
 
 # Lier les touches clavier
-fenetre.bind("<Left>", lambda event: fct.deplacer_vaisseau( canevas, image_vaisseau_tk, dx))
-fenetre.bind("<Right>", lambda event: fct.deplacer_vaisseau(canevas, image_vaisseau_tk, dx))
-fenetre.bind("<space>", lambda event: fct.tirer_projectile( canevas, image_vaisseau_tk, projectiles))
+fenetre.bind("<Left>", lambda event: fct.deplacer_vaisseau(event, canevas, dx))
+fenetre.bind("<Right>", lambda event: fct.deplacer_vaisseau(event, canevas, dx))
+fenetre.bind("<space>", lambda event: fct.tirer_projectile(event, canevas, projectiles, image_tir_tk, vitesse_projectile))
 
 # création du vaisseau 
 #vaisseau = canevas.create_oval()
