@@ -29,7 +29,7 @@ image_vaisseau_tk = ImageTk.PhotoImage(image_vaisseau)
 # Charger l'image du tir 
 image_tir = Image.open("images/coeur.png")  # Remplacez par le chemin de votre image
 image_tir = image_tir.resize((100, 100), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
-image_tir_tk = ImageTk.PhotoImage(image_coeur)
+image_tir_tk = ImageTk.PhotoImage(image_tir)
 
 image_alien = Image.open("images/ekko.png")  # Remplacez par le chemin de votre image
 image_alien = image_alien.resize((100, 100), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
