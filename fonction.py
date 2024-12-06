@@ -20,24 +20,34 @@ def deplacer_vaisseau(event, canevas, dx):
         canevas.move(vaisseau, dx, 0)
 
 # Tirer un projectile
-def tirer_projectile(event, canevas, projectiles):
-    x, y = canevas.coords(vaisseau)
-    projectile = canevas.create_image(x - 5, y - 20, x + 5, y - 10, image = image_tir_tk)
+def tirer_projectile(event, canevas, projectiles, image_tir_tk, vitesse_projectile, fenetre):
+    # Récupérer les coordonnées du centre du vaisseau
+    x, y = canevas.coords(vaisseau)  # Assure-toi que `vaisseau` est défini
+    # Créer le projectile au-dessus du vaisseau
+    projectile = canevas.create_image(x, y - 20, image=image_tir_tk, anchor="center")
+    # Ajouter le projectile à la liste des projectiles
     projectiles.append(projectile)
-    deplacer_projectile(projectile)
+    # Commencer à déplacer le projectile
+    deplacer_projectile(projectile, canevas, vitesse_projectile, projectiles, fenetre)
 
-# Déplacer un projectile vers le haut
+# Deplacer un projectile
 def deplacer_projectile(projectile, canevas, vitesse_projectile, projectiles, fenetre):
-    if canevas.coords(projectile):
-        canevas.move(projectile, 0, vitesse_projectile)
-        x, y, _, _ = canevas.bbox(projectile)
-
-        # Vérifier collision avec l'alien
+    # Vérifier si le projectile existe toujours
+    coords = canevas.coords(projectile)
+    if coords:  # coords est vide si l'objet a été supprimé
+        # Déplacer le projectile vers le haut
+        canevas.move(projectile, 0, -vitesse_projectile)
+        x, y = coords  # Les coordonnées du centre de l'image
+        # Supprimer le projectile s'il sort de l'écran
+        if y < 0:
+            canevas.delete(projectile)
+            projectiles.remove(projectile)
+            return
+        # Vérifier collision avec un alien (à implémenter)
         if collision(projectile, alien, canevas):
             canevas.delete(projectile)
             canevas.delete(alien)
             projectiles.remove(projectile)
-            return
 
         # Supprimer le projectile lorsqu'il sort du canevas
         if y <= 0:
