@@ -31,6 +31,7 @@ image_tir = Image.open("images/coeur.png")  # Remplacez par le chemin de votre i
 image_tir = image_tir.resize((100, 100), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
 image_tir_tk = ImageTk.PhotoImage(image_tir)
 
+# Charger l'image de l'alien
 image_alien = Image.open("images/ekko.png")  # Remplacez par le chemin de votre image
 image_alien = image_alien.resize((100, 100), Image.Resampling.LANCZOS)  # Redimensionner si nécessaire
 image_alien_tk = ImageTk.PhotoImage(image_alien)
@@ -44,7 +45,6 @@ canevas.pack(fill="both", expand=True)
 # Affichage de l'image de fond
 image_fond_id = canevas.create_image(0, 0, anchor="nw", image=image_fond_tk, tags="fond")
  
-
 # Affichage du score sur le canevas
 score = 0
 id_score = canevas.create_text(
@@ -72,11 +72,6 @@ id_bouton_quitter = canevas.create_window(largeur_ecran/2, 400, window=bouton_qu
 fenetre.bind("<Left>", lambda event: fct.deplacer_vaisseau(event, canevas, dx))
 fenetre.bind("<Right>", lambda event: fct.deplacer_vaisseau(event, canevas, dx))
 fenetre.bind("<space>", lambda event: fct.tirer_projectile(event, canevas, projectiles, image_tir_tk, vitesse_projectile))
-
-# création du vaisseau 
-#vaisseau = canevas.create_oval()
-# Lancer le mouvement de l'Alien
-#fct.deplacer_alien()
 
 # Lancement de la boucle principale de la fenêtre
 fenetre.mainloop()
